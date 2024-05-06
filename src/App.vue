@@ -2,6 +2,7 @@
 import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
+import LoadingCard from "./components/LoadingCard.vue";
 
 export default {
 
@@ -9,6 +10,7 @@ export default {
 
     AppHeader,
     AppMain,
+    LoadingCard
 
   },
 
@@ -45,7 +47,9 @@ export default {
 
     <AppHeader />
 
-    <AppMain :charactersArray="charactersArray" />
+    <LoadingCard v-show="charactersArray.length < 20" />
+
+    <AppMain :charactersArray="charactersArray"  v-show="charactersArray.length === 20" />
 
     <!-- <h1 v-for="caracter in charactersArray"> {{ caracter.name }} </h1> -->
 
