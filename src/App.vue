@@ -47,7 +47,7 @@ export default {
 
     <AppHeader />
 
-    <LoadingCard v-show="charactersArray.length < 20" />
+    <LoadingCard :charactersArray="charactersArray" v-show="charactersArray.length < 20" />
 
     <AppMain :charactersArray="charactersArray"  v-show="charactersArray.length === 20" />
 
