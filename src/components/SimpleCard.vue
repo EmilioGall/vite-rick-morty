@@ -10,12 +10,15 @@ export default {
   computed: {
 
     classObject() {
-
       return {
-        active: this.isActive && !this.error,
-        'text-danger': this.error && this.error.type === 'fatal'
+
+        'text-danger': this.characterObj.status === "Dead",
+
+        'text-success': this.characterObj.status === "Alive",
+
+        'text-secondary': this.characterObj.status === "unknown",
+
       }
-      
     },
 
   }
@@ -35,7 +38,7 @@ export default {
 
       <p class="fs-6 mb-1"> {{ characterObj.species }} </p>
 
-      <p class="fs-6 mb-1"> {{ characterObj.status }} </p>
+      <p class="fs-6 mb-1" :class="classObject"> {{ characterObj.status }} </p>
 
     </div>
 
