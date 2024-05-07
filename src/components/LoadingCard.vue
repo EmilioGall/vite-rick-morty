@@ -11,7 +11,7 @@ export default {
 
       percentageLoading() {
 
-         let percentage = this.charactersArray.length;
+         let percentage = this.charactersArray.length * 100 / 20;
 
          return percentage;
          

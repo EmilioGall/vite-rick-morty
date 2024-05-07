@@ -47,9 +47,9 @@ export default {
 
     <AppHeader />
 
-    <LoadingCard :charactersArray="charactersArray" v-show="charactersArray.length < 20" />
+    <LoadingCard :charactersArray="charactersArray" v-if="charactersArray.length < 20" />
 
-    <AppMain :charactersArray="charactersArray"  v-show="charactersArray.length === 20" />
+    <AppMain :charactersArray="charactersArray"  v-else />
 
     <!-- <h1 v-for="caracter in charactersArray"> {{ caracter.name }} </h1> -->
 
