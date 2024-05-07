@@ -3,6 +3,7 @@ import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import LoadingCard from "./components/LoadingCard.vue";
+import SelectBar from "./components/SelectBar.vue";
 
 export default {
 
@@ -10,7 +11,8 @@ export default {
 
     AppHeader,
     AppMain,
-    LoadingCard
+    LoadingCard,
+    SelectBar,
 
   },
 
@@ -46,6 +48,8 @@ export default {
   <div class="container-md">
 
     <AppHeader />
+
+    <SelectBar />
 
     <LoadingCard :charactersArray="charactersArray" v-if="charactersArray.length < 20" />
 
