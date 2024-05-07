@@ -35,6 +35,7 @@ export default {
   },
 
   methods: {
+
     getCharacters() {
 
       this.isLoading = true;
@@ -76,7 +77,7 @@ export default {
 
     <AppHeader />
 
-    <SelectBar />
+    <SelectBar @filter="getCharacters" />
 
     <LoadingCard v-if="isLoading" />
 
