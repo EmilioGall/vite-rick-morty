@@ -18,7 +18,7 @@ export default {
 
 <template>
 
-   <div class="py-4 border">
+   <div class="py-3">
 
       <div class="d-flex justify-content-between align-items-center">
 
