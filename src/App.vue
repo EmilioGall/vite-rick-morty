@@ -1,5 +1,8 @@
 <script>
+import { store } from "./store";
+
 import axios from "axios";
+
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import LoadingCard from "./components/LoadingCard.vue";
@@ -19,25 +22,49 @@ export default {
   data() {
     return {
 
-      charactersArray: [],
+      store,
+      isLoading: false,
 
     };
   },
 
   created() {
 
-    axios
-      .get("https://rickandmortyapi.com/api/character")
+    this.getCharacters();
+
+  },
+
+  methods: {
+    getCharacters() {
+
+      this.isLoading = true;
+
+      const paramsObj = {
+
+      };
+
+      if (this.store.selectedStatus !== "All") {
+        paramsObj.status = this.store.selectedStatus;
+      }
+
+      console.log("Status selected", this.store.selectedStatus);
+
+      axios
+      .get("https://rickandmortyapi.com/api/character", {
+          params: paramsObj,
+        })
       .then((resp) => {
 
         console.log(resp);
 
-        this.charactersArray = resp.data.results;
+        this.store.charactersArray = resp.data.results;
 
-        console.log("this.charactersArray", this.charactersArray);
+        console.log("this.charactersArray", this.store.charactersArray);
+
+        this.isLoading = false;
 
       });
-
+    },
   },
 
 };
@@ -51,9 +78,9 @@ export default {
 
     <SelectBar />
 
-    <LoadingCard :charactersArray="charactersArray" v-if="charactersArray.length < 20" />
+    <LoadingCard v-if="isLoading" />
 
-    <AppMain :charactersArray="charactersArray"  v-else />
+    <AppMain :charactersArray="store.charactersArray"  v-else />
 
     <!-- <h1 v-for="caracter in charactersArray"> {{ caracter.name }} </h1> -->
 
