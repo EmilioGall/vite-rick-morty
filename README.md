@@ -1,5 +1,3 @@
-Here is a README.md template based on the provided structure, modified for the "vite-rick-morty" project:
-
 # Vite Rick and Morty
 
 A Vue 3 application built with Vite, fetching character data from the Rick and Morty API. This project showcases the use of Vue 3's composition API and provides a dynamic, interactive interface to explore characters from the popular show.
